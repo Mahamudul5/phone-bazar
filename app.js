@@ -1,4 +1,5 @@
 // search button function create 
+
 const searchItem = () => {
     const inputFieldItem = document.getElementById('input');
     showField = inputFieldItem.value;
@@ -6,6 +7,7 @@ const searchItem = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${showField}`
     // clear input field 
     inputFieldItem.value = '';
+
     // call the api 
     fetch(url)
         .then(res => res.json())
@@ -21,12 +23,15 @@ const displayResult = phone => {
     const hTag = document.getElementById('result-massage');
     hTag.innerText = '';
     if (phone.length != 0) {
-        // console.log(phone.length); 
-        phone.forEach(show = phone => {
+        // console.log(phone.length);
+
+        phone.slice(0, 20).forEach(show = phone => {
             // console.log(phone) 
             // create div for showing result 
             const phoneDetailsDiv = document.createElement('div');
             // set result dynamic 
+
+
             phoneDetailsDiv.innerHTML =
                 `
                  <div class="card">
@@ -60,8 +65,9 @@ const showDetails = detailsById => {
 const displayMoreInformation = detailsInformation => {
     // console.log(detailsInformation); 
     const detailsShowDiv = document.getElementById('details-show')
-    detailsShowDiv.innerHTML = '';
+
     const detailsInformationShow = document.createElement('div');
+
     detailsInformationShow.innerHTML = `
     <div class="card mx-auto " style="width: 20rem;">
     <img src="${detailsInformation.image}" class="card-img-top img-fluid w-25 m-auto" alt="...">
@@ -78,8 +84,8 @@ const displayMoreInformation = detailsInformation => {
       <p>GPS:${detailsInformation.others.GPS}</P>
       <p>Radio:${detailsInformation.others.Radio}</p>
       <p>WALAN:${detailsInformation.others.WLAN}</p>
-      
-    </div>
+       </div>
   </div>`
+
     detailsShowDiv.appendChild(detailsInformationShow);
 }
