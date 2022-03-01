@@ -1,5 +1,8 @@
+// spinner added
+const setSpinner = displaySpinner => {
+    document.getElementById('set-spinner').style.display = displaySpinner;
+}
 // search button function create 
-
 const searchItem = () => {
     const inputFieldItem = document.getElementById('input');
     showField = inputFieldItem.value;
@@ -7,7 +10,6 @@ const searchItem = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${showField}`
     // clear input field 
     inputFieldItem.value = '';
-
     // call the api 
     fetch(url)
         .then(res => res.json())
@@ -24,36 +26,30 @@ const displayResult = phone => {
     hTag.innerText = '';
     if (phone.length != 0) {
         // console.log(phone.length);
-
-        phone.slice(0, 20).forEach(show = phone => {
+        phone.slice(1, 21).forEach(show = phone => {
             // console.log(phone) 
             // create div for showing result 
             const phoneDetailsDiv = document.createElement('div');
             // set result dynamic 
-
-
             phoneDetailsDiv.innerHTML =
                 `
                  <div class="card">
-          <img src="${phone.image}" class="card-img-top p-2 m-auto img-fluid w-25" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">${phone.phone_name}</h5>
-            <h6> Brand: ${phone.brand}</h6>
-            <button onclick="showDetails('${phone.slug}')" class="bg-secondary btn btn-dark" >About Phone</button>
-           </div>
-           </div>`
+                 <img src="${phone.image}" class="card-img-top p-2 m-auto img-fluid w-25" alt="...">
+                 <div class="card-body">
+                 <h5 class="card-title">${phone.phone_name}</h5>
+                 <h6> Brand: ${phone.brand}</h6>
+                 <button onclick="showDetails('${phone.slug}')" class="bg-secondary btn btn-dark" >About Phone </button>
+                </div>
+                </div>`
             // console.log(phone.slug);
             //    append the div into main div 
 
             displayResultDiv.appendChild(phoneDetailsDiv);
-
         });
-
     }
     else {
         hTag.innerText = 'no result found';
     }
-
 }
 // detail result show 
 const showDetails = detailsById => {
@@ -65,7 +61,6 @@ const showDetails = detailsById => {
 const displayMoreInformation = detailsInformation => {
     // console.log(detailsInformation); 
     const detailsShowDiv = document.getElementById('details-show')
-
     const detailsInformationShow = document.createElement('div');
     detailsShowDiv.innerHTML = '';
     detailsInformationShow.innerHTML = `
@@ -73,19 +68,18 @@ const displayMoreInformation = detailsInformation => {
     <img src="${detailsInformation.image}" class="card-img-top img-fluid w-25 m-auto" alt="...">
     <div class="card-body">
       <h5 class="card-title">${detailsInformation.name}</h5>
-      <p>releaseDate:${detailsInformation.releaseDate}</p>
+      <p>releaseDate:${detailsInformation.releaseDate ? detailsInformation.releaseDate : 'not found'}</p>
       <p>storage:${detailsInformation.mainFeatures.storage}</p>
       <p>DisplaySize:${detailsInformation.mainFeatures.displaySize}</p>
       <p>chipSet:${detailsInformation.mainFeatures.chipSet}</p>
       <p>memory:${detailsInformation.mainFeatures.memory}</p>
       <p>sensor:${detailsInformation.mainFeatures.sensors.slice(0, 12)}</p>
       <p>others:</p>
-      <p>Bluetooth:${detailsInformation.others.Bluetooth}</p>
+      <p>Bluetooth:${detailsInformation.others.Bluetooth ? detailsInformation.others.Bluetooth : 'not supportted'}</p>
       <p>GPS:${detailsInformation.others.GPS}</P>
       <p>Radio:${detailsInformation.others.Radio}</p>
       <p>WALAN:${detailsInformation.others.WLAN}</p>
        </div>
   </div>`
-
     detailsShowDiv.appendChild(detailsInformationShow);
 }
