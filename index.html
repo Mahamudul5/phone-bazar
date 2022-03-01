@@ -27,17 +27,24 @@
         <h1 class="text-center mt-5">Phone Bazar</h1>
     </header>
     <main>
-        <div class="input-group mb-3 w-25 m-auto">
-            <input id="input" type="text" class="form-control" placeholder="phone" aria-label="Recipient's username"
-                aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button onclick="searchItem()" class="btn btn-outline-secondary" type="button">Search<i
-                        class="fa-solid fa-magnifying-glass"></i></button>
+        <div class="container">
+            <div class="input-group mb-3 w-25 m-auto">
+                <input id="input" type="text" class="form-control" placeholder="phone" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button onclick="searchItem()" class="btn btn-outline-secondary" type="button">Search<i
+                            class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
             </div>
-        </div>
-        <div id="displayDiv">
+
+
+            <div id="displayDiv" class="row row-cols-1 row-cols-md-3 g-4">
+
+            </div>
 
         </div>
+
+
     </main>
     <!-- js file connect  -->
     <script src="app.js"></script>
