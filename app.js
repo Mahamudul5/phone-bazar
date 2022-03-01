@@ -1,7 +1,3 @@
-// spinner added
-const setSpinner = displaySpinner => {
-    document.getElementById('set-spinner').style.display = displaySpinner;
-}
 // search button function create 
 const searchItem = () => {
     const inputFieldItem = document.getElementById('input');
@@ -83,3 +79,7 @@ const displayMoreInformation = detailsInformation => {
   </div>`
     detailsShowDiv.appendChild(detailsInformationShow);
 }
+document.getElementById('clearDiv').addEventListener("click", clearFunction = () => {
+    const div = document.getElementById('details-show');
+    div.innerHTML = '';
+});
