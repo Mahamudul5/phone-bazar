@@ -58,16 +58,27 @@ const showDetails = detailsById => {
         .then(data => displayMoreInformation(data.data))
 }
 const displayMoreInformation = detailsInformation => {
-    console.log(detailsInformation);
+    // console.log(detailsInformation); 
     const detailsShowDiv = document.getElementById('details-show')
+    detailsShowDiv.innerHTML = '';
     const detailsInformationShow = document.createElement('div');
     detailsInformationShow.innerHTML = `
-    <div class="card" style="width: 18rem;">
-    <img src="${detailsInformation.image}" class="card-img-top" alt="...">
+    <div class="card mx-auto " style="width: 20rem;">
+    <img src="${detailsInformation.image}" class="card-img-top img-fluid w-25 m-auto" alt="...">
     <div class="card-body">
       <h5 class="card-title">${detailsInformation.name}</h5>
       <p>releaseDate:${detailsInformation.releaseDate}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <p>storage:${detailsInformation.mainFeatures.storage}</p>
+      <p>DisplaySize:${detailsInformation.mainFeatures.displaySize}</p>
+      <p>chipSet:${detailsInformation.mainFeatures.chipSet}</p>
+      <p>memory:${detailsInformation.mainFeatures.memory}</p>
+      <p>sensor:${detailsInformation.mainFeatures.sensors.slice(0, 12)}</p>
+      <p>others:</p>
+      <p>Bluetooth:${detailsInformation.others.Bluetooth}</p>
+      <p>GPS:${detailsInformation.others.GPS}</P>
+      <p>Radio:${detailsInformation.others.Radio}</p>
+      <p>WALAN:${detailsInformation.others.WLAN}</p>
+      
     </div>
   </div>`
     detailsShowDiv.appendChild(detailsInformationShow);
