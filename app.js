@@ -67,7 +67,7 @@ const displayMoreInformation = detailsInformation => {
     const detailsShowDiv = document.getElementById('details-show')
 
     const detailsInformationShow = document.createElement('div');
-
+    detailsShowDiv.innerHTML = '';
     detailsInformationShow.innerHTML = `
     <div class="card mx-auto " style="width: 20rem;">
     <img src="${detailsInformation.image}" class="card-img-top img-fluid w-25 m-auto" alt="...">
