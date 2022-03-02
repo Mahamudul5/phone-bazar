@@ -1,7 +1,13 @@
+
+const setSpinner = spinnerValue => {
+    document.getElementById('spinner').style.display = spinnerValue;
+}
 // search button function create 
 const searchItem = () => {
     const inputFieldItem = document.getElementById('input');
-    showField = inputFieldItem.value;
+    showField = inputFieldItem.value.toLowerCase();
+    // call to spinner 
+    setSpinner('block');
     // console.log(showField); 
     const url = `https://openapi.programming-hero.com/api/phones?search=${showField}`
     // clear input field 
@@ -39,12 +45,13 @@ const displayResult = phone => {
                 </div>`
             // console.log(phone.slug);
             //    append the div into main div 
-
             displayResultDiv.appendChild(phoneDetailsDiv);
         });
+        setSpinner('none');
     }
     else {
         hTag.innerText = 'no result found';
+        setSpinner('none');
     }
 }
 // detail result show 
@@ -64,17 +71,17 @@ const displayMoreInformation = detailsInformation => {
     <img src="${detailsInformation.image}" class="card-img-top img-fluid w-25 m-auto" alt="...">
     <div class="card-body">
       <h5 class="card-title">${detailsInformation.name}</h5>
-      <p>releaseDate:${detailsInformation.releaseDate ? detailsInformation.releaseDate : 'not found'}</p>
-      <p>storage:${detailsInformation.mainFeatures.storage}</p>
-      <p>DisplaySize:${detailsInformation.mainFeatures.displaySize}</p>
-      <p>chipSet:${detailsInformation.mainFeatures.chipSet}</p>
-      <p>memory:${detailsInformation.mainFeatures.memory}</p>
-      <p>sensor:${detailsInformation.mainFeatures.sensors.slice(0, 12)}</p>
-      <p>others:</p>
-      <p>Bluetooth:${detailsInformation.others.Bluetooth ? detailsInformation.others.Bluetooth : 'not supportted'}</p>
-      <p>GPS:${detailsInformation.others.GPS}</P>
-      <p>Radio:${detailsInformation.others.Radio}</p>
-      <p>WALAN:${detailsInformation.others.WLAN}</p>
+      <p><b>releaseDate:</b>${detailsInformation.releaseDate ? detailsInformation.releaseDate : 'not found'}</p>
+      <p><b>storage:</b>${detailsInformation.mainFeatures.storage}</p>
+      <p><b>DisplaySize:</b>${detailsInformation.mainFeatures.displaySize}</p>
+      <p><b>chipSet:</b>${detailsInformation.mainFeatures.chipSet}</p>
+      <p><b>memory:</b>${detailsInformation.mainFeatures.memory}</p>
+      <p><b>sensor:</b>${detailsInformation.mainFeatures.sensors.slice(0, 12)}</p>
+      <p><b>others:</b></p>
+      <p><b>Bluetooth:</b>${detailsInformation.others.Bluetooth ? detailsInformation.others.Bluetooth : 'not supportted'}</p>
+      <p><b>GPS:</b>${detailsInformation.others.GPS}</P>
+      <p><b>Radio:</b>${detailsInformation.others.Radio}</p>
+      <p><b>WALAN:</b>${detailsInformation.others.WLAN}</p>
        </div>
   </div>`
     detailsShowDiv.appendChild(detailsInformationShow);
